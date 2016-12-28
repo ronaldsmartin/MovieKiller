@@ -9,6 +9,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import Photos
 
 class VideoLibraryViewController: UIViewController {
     
@@ -19,6 +20,8 @@ class VideoLibraryViewController: UIViewController {
     private let viewModel = VideoLibraryViewModel()
     private let disposeBag = DisposeBag()
     
+    private let CellReuseId = "VideoLibraryCell"
+    
     
     // MARK: - View lifecycle
 
@@ -26,13 +29,22 @@ class VideoLibraryViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        tableView?.rx.setDataSource(viewModel)
-            .addDisposableTo(disposeBag)
+        bindTableData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func bindTableData() {
+        viewModel.videos()
+            .asDriver(onErrorJustReturn: [])
+            .drive(tableView.rx.items(cellIdentifier: CellReuseId,
+                                      cellType: UITableViewCell.self)) { row, item, cell in
+                cell.textLabel?.text = "\(item.sourceType) #\(row)"
+            }
+            .addDisposableTo(disposeBag)
     }
     
 

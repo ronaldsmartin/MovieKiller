@@ -26,6 +26,14 @@ class VideoLibraryViewModel: NSObject {
     deinit {
         store.unsubscribe(self)
     }
+    
+    func videos() -> Observable<[PHAsset]> {
+        // TODO: Replace PHAsset with a ViewModel type.
+        return videoResults.asObservable()
+            .map { fetchResult in
+                (0 ..< fetchResult.count).map { fetchResult.object(at: $0) }
+            }
+    }
 }
 
 
@@ -34,23 +42,5 @@ extension VideoLibraryViewModel: StoreSubscriber {
     
     func newState(state: VideoLibraryState) {
         videoResults.value = state.videos
-    }
-}
-
-
-// MARK: - UITableViewDataSource
-extension VideoLibraryViewModel: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return videoResults.value.count
-    }
-    
-    private static let CellReuseId = "VideoLibraryCell"
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: VideoLibraryViewModel.CellReuseId,
-                                                 for: indexPath)
-        
-        return cell
     }
 }
