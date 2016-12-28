@@ -23,6 +23,7 @@
 		C3876FDA1E135D8D0072009C /* ConfigurationReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3876FD91E135D8D0072009C /* ConfigurationReducer.swift */; };
 		C3876FDF1E13616D0072009C /* VideoLibraryState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3876FDE1E13616D0072009C /* VideoLibraryState.swift */; };
 		C3876FE11E1362750072009C /* VideoLibraryReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3876FE01E1362750072009C /* VideoLibraryReducer.swift */; };
+		C3876FE31E13674C0072009C /* VideoLibraryActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3876FE21E13674C0072009C /* VideoLibraryActions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		C3876FD91E135D8D0072009C /* ConfigurationReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationReducer.swift; path = Features/Config/ConfigurationReducer.swift; sourceTree = "<group>"; };
 		C3876FDE1E13616D0072009C /* VideoLibraryState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoLibraryState.swift; path = "Features/Video Library/VideoLibraryState.swift"; sourceTree = "<group>"; };
 		C3876FE01E1362750072009C /* VideoLibraryReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoLibraryReducer.swift; path = "Features/Video Library/VideoLibraryReducer.swift"; sourceTree = "<group>"; };
+		C3876FE21E13674C0072009C /* VideoLibraryActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoLibraryActions.swift; path = "Features/Video Library/VideoLibraryActions.swift"; sourceTree = "<group>"; };
 		DB5111DD327818FD161395B1 /* Pods_Movie_KillerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movie_KillerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -195,6 +197,7 @@
 			children = (
 				C3876FDE1E13616D0072009C /* VideoLibraryState.swift */,
 				C3876FE01E1362750072009C /* VideoLibraryReducer.swift */,
+				C3876FE21E13674C0072009C /* VideoLibraryActions.swift */,
 			);
 			name = "Video Library";
 			sourceTree = "<group>";
@@ -490,6 +493,7 @@
 				C3876F9F1E10FD950072009C /* ViewController.swift in Sources */,
 				C3876FD71E135CCC0072009C /* ConfigurationState.swift in Sources */,
 				C3876FD51E135B910072009C /* AppReducer.swift in Sources */,
+				C3876FE31E13674C0072009C /* VideoLibraryActions.swift in Sources */,
 				C3876F9D1E10FD950072009C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

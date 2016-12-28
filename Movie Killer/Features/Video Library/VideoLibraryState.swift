@@ -8,6 +8,7 @@
 
 import Foundation
 import ReSwift
+import Photos
 
 /*
  Application sub-state containing info related to fetching, displaying, and selecting videos.
@@ -18,9 +19,6 @@ struct VideoLibraryState: StateType {
         return VideoLibraryState()
     }
     
-    /// Whether or not the user has granted the app permission to access Photos/Videos.
-    var hasPhotosPermission = false
-    
-    /// The collection of movies that
-    var library = [Any]()
+    /// The collection of movies with which the user can interact view and play.
+    var videos = PHFetchResult<PHAsset>()
 }
