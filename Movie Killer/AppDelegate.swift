@@ -7,6 +7,11 @@
 //
 
 import UIKit
+import ReSwift
+
+
+/// The global application state store.
+var store = Store<AppState>(reducer: AppReducer(), state: nil)
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

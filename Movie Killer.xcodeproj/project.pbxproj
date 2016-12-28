@@ -17,6 +17,10 @@
 		C3876FA71E10FD960072009C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3876FA51E10FD960072009C /* LaunchScreen.storyboard */; };
 		C3876FB21E10FD960072009C /* Movie_KillerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3876FB11E10FD960072009C /* Movie_KillerTests.swift */; };
 		C3876FBD1E10FD960072009C /* Movie_KillerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3876FBC1E10FD960072009C /* Movie_KillerUITests.swift */; };
+		C3876FD31E135A4F0072009C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3876FD21E135A4F0072009C /* AppState.swift */; };
+		C3876FD51E135B910072009C /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3876FD41E135B910072009C /* AppReducer.swift */; };
+		C3876FD71E135CCC0072009C /* ConfigurationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3876FD61E135CCC0072009C /* ConfigurationState.swift */; };
+		C3876FDA1E135D8D0072009C /* ConfigurationReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3876FD91E135D8D0072009C /* ConfigurationReducer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +62,10 @@
 		C3876FB81E10FD960072009C /* Movie KillerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Movie KillerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3876FBC1E10FD960072009C /* Movie_KillerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie_KillerUITests.swift; sourceTree = "<group>"; };
 		C3876FBE1E10FD960072009C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3876FD21E135A4F0072009C /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		C3876FD41E135B910072009C /* AppReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
+		C3876FD61E135CCC0072009C /* ConfigurationState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationState.swift; path = Features/Config/ConfigurationState.swift; sourceTree = "<group>"; };
+		C3876FD91E135D8D0072009C /* ConfigurationReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationReducer.swift; path = Features/Config/ConfigurationReducer.swift; sourceTree = "<group>"; };
 		DB5111DD327818FD161395B1 /* Pods_Movie_KillerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movie_KillerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -137,7 +145,10 @@
 		C3876F9B1E10FD950072009C /* Movie Killer */ = {
 			isa = PBXGroup;
 			children = (
+				C3876FD81E135CD00072009C /* Configuration */,
 				C3876F9C1E10FD950072009C /* AppDelegate.swift */,
+				C3876FD21E135A4F0072009C /* AppState.swift */,
+				C3876FD41E135B910072009C /* AppReducer.swift */,
 				C3876F9E1E10FD950072009C /* ViewController.swift */,
 				C3876FA01E10FD950072009C /* Main.storyboard */,
 				C3876FA31E10FD960072009C /* Assets.xcassets */,
@@ -163,6 +174,15 @@
 				C3876FBE1E10FD960072009C /* Info.plist */,
 			);
 			path = "Movie KillerUITests";
+			sourceTree = "<group>";
+		};
+		C3876FD81E135CD00072009C /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				C3876FD61E135CCC0072009C /* ConfigurationState.swift */,
+				C3876FD91E135D8D0072009C /* ConfigurationReducer.swift */,
+			);
+			name = Configuration;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -449,7 +469,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3876FD31E135A4F0072009C /* AppState.swift in Sources */,
+				C3876FDA1E135D8D0072009C /* ConfigurationReducer.swift in Sources */,
 				C3876F9F1E10FD950072009C /* ViewController.swift in Sources */,
+				C3876FD71E135CCC0072009C /* ConfigurationState.swift in Sources */,
+				C3876FD51E135B910072009C /* AppReducer.swift in Sources */,
 				C3876F9D1E10FD950072009C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -707,6 +731,7 @@
 				C3876FC31E10FD960072009C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C3876FC41E10FD960072009C /* Build configuration list for PBXNativeTarget "Movie KillerTests" */ = {
 			isa = XCConfigurationList;
@@ -715,6 +740,7 @@
 				C3876FC61E10FD960072009C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C3876FC71E10FD960072009C /* Build configuration list for PBXNativeTarget "Movie KillerUITests" */ = {
 			isa = XCConfigurationList;
@@ -723,6 +749,7 @@
 				C3876FC91E10FD960072009C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
