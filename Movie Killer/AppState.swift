@@ -12,5 +12,9 @@ import ReSwift
 /// The global application state.
 struct AppState: StateType {
     
+    /// User application settings.
     var configuration: ConfigurationState
+    
+    /// Movies playable through the app.
+    var library: VideoLibraryState
 }

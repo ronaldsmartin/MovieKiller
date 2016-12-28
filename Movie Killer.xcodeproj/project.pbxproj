@@ -21,6 +21,8 @@
 		C3876FD51E135B910072009C /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3876FD41E135B910072009C /* AppReducer.swift */; };
 		C3876FD71E135CCC0072009C /* ConfigurationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3876FD61E135CCC0072009C /* ConfigurationState.swift */; };
 		C3876FDA1E135D8D0072009C /* ConfigurationReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3876FD91E135D8D0072009C /* ConfigurationReducer.swift */; };
+		C3876FDF1E13616D0072009C /* VideoLibraryState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3876FDE1E13616D0072009C /* VideoLibraryState.swift */; };
+		C3876FE11E1362750072009C /* VideoLibraryReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3876FE01E1362750072009C /* VideoLibraryReducer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,8 @@
 		C3876FD41E135B910072009C /* AppReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
 		C3876FD61E135CCC0072009C /* ConfigurationState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationState.swift; path = Features/Config/ConfigurationState.swift; sourceTree = "<group>"; };
 		C3876FD91E135D8D0072009C /* ConfigurationReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationReducer.swift; path = Features/Config/ConfigurationReducer.swift; sourceTree = "<group>"; };
+		C3876FDE1E13616D0072009C /* VideoLibraryState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoLibraryState.swift; path = "Features/Video Library/VideoLibraryState.swift"; sourceTree = "<group>"; };
+		C3876FE01E1362750072009C /* VideoLibraryReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoLibraryReducer.swift; path = "Features/Video Library/VideoLibraryReducer.swift"; sourceTree = "<group>"; };
 		DB5111DD327818FD161395B1 /* Pods_Movie_KillerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movie_KillerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -146,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				C3876FD81E135CD00072009C /* Configuration */,
+				C3876FDD1E13612B0072009C /* Video Library */,
 				C3876F9C1E10FD950072009C /* AppDelegate.swift */,
 				C3876FD21E135A4F0072009C /* AppState.swift */,
 				C3876FD41E135B910072009C /* AppReducer.swift */,
@@ -183,6 +188,15 @@
 				C3876FD91E135D8D0072009C /* ConfigurationReducer.swift */,
 			);
 			name = Configuration;
+			sourceTree = "<group>";
+		};
+		C3876FDD1E13612B0072009C /* Video Library */ = {
+			isa = PBXGroup;
+			children = (
+				C3876FDE1E13616D0072009C /* VideoLibraryState.swift */,
+				C3876FE01E1362750072009C /* VideoLibraryReducer.swift */,
+			);
+			name = "Video Library";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -469,7 +483,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3876FDF1E13616D0072009C /* VideoLibraryState.swift in Sources */,
 				C3876FD31E135A4F0072009C /* AppState.swift in Sources */,
+				C3876FE11E1362750072009C /* VideoLibraryReducer.swift in Sources */,
 				C3876FDA1E135D8D0072009C /* ConfigurationReducer.swift in Sources */,
 				C3876F9F1E10FD950072009C /* ViewController.swift in Sources */,
 				C3876FD71E135CCC0072009C /* ConfigurationState.swift in Sources */,

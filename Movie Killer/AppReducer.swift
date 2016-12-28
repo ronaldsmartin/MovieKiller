@@ -11,10 +11,13 @@ import ReSwift
 
 struct AppReducer: Reducer {
     
+    private let configReducer = ConfigurationReducer()
+    private let libraryReducer = VideoLibraryReducer()
+    
     func handleAction(action: Action, state: AppState?) -> AppState {
         return AppState(
-            configuration: ConfigurationReducer()
-                .handleAction(action: action, state: state?.configuration)
+            configuration: configReducer.handleAction(action: action, state: state?.configuration),
+            library: libraryReducer.handleAction(action: action, state: state?.library)
         )
     }
 }
