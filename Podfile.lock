@@ -1,0 +1,33 @@
+PODS:
+  - Nimble (5.1.1)
+  - Quick (1.0.0)
+  - ReSwift (3.0.0)
+  - RxBlocking (3.0.1):
+    - RxSwift (~> 3.0)
+  - RxCocoa (3.0.1):
+    - RxSwift (~> 3.0)
+  - RxSwift (3.0.1)
+  - RxTest (3.0.1):
+    - RxSwift (~> 3.0)
+
+DEPENDENCIES:
+  - Nimble
+  - Quick
+  - ReSwift
+  - RxBlocking (~> 3.0)
+  - RxCocoa (~> 3.0)
+  - RxSwift (~> 3.0)
+  - RxTest (~> 3.0)
+
+SPEC CHECKSUMS:
+  Nimble: 415e3aa3267e7bc2c96b05fa814ddea7bb686a29
+  Quick: 8024e4a47e6cc03a9d5245ef0948264fc6d27cff
+  ReSwift: f0255f4b4f2dacd12c5d97d34d13fc5dad6d6371
+  RxBlocking: 5de082d09d1ab45b49173f309f1a97d6b50f34c4
+  RxCocoa: 15a52fc590dcc700cb4a690a633b5c5184ce3a78
+  RxSwift: af5680055c4ad04480189c52d28385b1029493a6
+  RxTest: 9867e6f3c435af30fbdb44b6d8ec30b78c40b515
+
+PODFILE CHECKSUM: 24ba9061f339da904b0fdbf9e4b2020df5b4a52e
+
+COCOAPODS: 1.1.1
