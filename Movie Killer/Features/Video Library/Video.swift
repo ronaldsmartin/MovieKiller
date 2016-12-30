@@ -48,3 +48,10 @@ struct Video {
         }
     }
 }
+
+// MARK: - Equatable
+extension Video: Equatable {}
+func ==(lhs: Video, rhs: Video) -> Bool {
+    return lhs.asset.isEqual(rhs.asset)
+        || lhs.filename == rhs.filename
+}

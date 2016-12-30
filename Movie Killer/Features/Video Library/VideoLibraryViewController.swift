@@ -41,6 +41,7 @@ class VideoLibraryViewController: UIViewController {
         let cellReuseId = "VideoLibraryCell"
         
         data.asDriver(onErrorJustReturn: [])
+            .distinctUntilChanged { $0 == $1 }
             .drive(observer.items(cellIdentifier: cellReuseId)) { _, item, cell in
                 cell.textLabel?.text = item.filename
                 cell.detailTextLabel?.text = item.displayDate
