@@ -9,7 +9,6 @@
 import UIKit
 import RxCocoa
 import RxSwift
-import Photos
 
 class VideoLibraryViewController: UIViewController {
     
@@ -19,8 +18,6 @@ class VideoLibraryViewController: UIViewController {
     
     private let viewModel = VideoLibraryViewModel()
     private let disposeBag = DisposeBag()
-    
-    private let CellReuseId = "VideoLibraryCell"
     
     
     // MARK: - View lifecycle
@@ -38,11 +35,27 @@ class VideoLibraryViewController: UIViewController {
     }
     
     func bindTableData() {
+        let cellReuseId = "VideoLibraryCell"
         viewModel.videos()
             .asDriver(onErrorJustReturn: [])
-            .drive(tableView.rx.items(cellIdentifier: CellReuseId,
-                                      cellType: UITableViewCell.self)) { row, item, cell in
-                cell.textLabel?.text = "\(item.sourceType) #\(row)"
+            .drive(tableView.rx.items(cellIdentifier: cellReuseId)) { _, item, cell in
+                cell.textLabel?.text = item.filename
+                                        
+                guard let imageView = cell.imageView else {
+                    print("Warning: cell does not contain required image outlet.")
+                    return
+                }
+                // Bind imageView to image updates.
+                item.thumbnail.asDriver()
+                    .drive(imageView.rx.image)
+                    .addDisposableTo(self.disposeBag)
+                // Make sure cell subviews resize to accomodate new thumbnails.
+                item.thumbnail.asObservable()
+                    .bindNext { _ in cell.sizeToFit() }
+                    .addDisposableTo(self.disposeBag)
+                // Request thumbnail asynchronously.
+                item.getThumbnail(with: self.viewModel.thumbnailManager,
+                                  size: self.viewModel.thumbnailSize)
             }
             .addDisposableTo(disposeBag)
     }

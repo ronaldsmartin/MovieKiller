@@ -26,6 +26,7 @@
 		C3876FE51E13AF3F0072009C /* Videos.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3876FE41E13AF3F0072009C /* Videos.storyboard */; };
 		C3876FEA1E13B0300072009C /* VideoLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3876FE91E13B0300072009C /* VideoLibraryViewController.swift */; };
 		C3876FEC1E13B07E0072009C /* VideoLibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3876FEB1E13B07E0072009C /* VideoLibraryViewModel.swift */; };
+		C3876FEE1E146EA30072009C /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3876FED1E146EA30072009C /* Video.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		C3876FE41E13AF3F0072009C /* Videos.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Videos.storyboard; path = "Features/Video Library/Videos.storyboard"; sourceTree = "<group>"; };
 		C3876FE91E13B0300072009C /* VideoLibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoLibraryViewController.swift; path = "Features/Video Library/VideoLibraryViewController.swift"; sourceTree = "<group>"; };
 		C3876FEB1E13B07E0072009C /* VideoLibraryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoLibraryViewModel.swift; path = "Features/Video Library/VideoLibraryViewModel.swift"; sourceTree = "<group>"; };
+		C3876FED1E146EA30072009C /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Video.swift; path = "Features/Video Library/Video.swift"; sourceTree = "<group>"; };
 		DB5111DD327818FD161395B1 /* Pods_Movie_KillerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movie_KillerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -202,6 +204,7 @@
 				C3876FE41E13AF3F0072009C /* Videos.storyboard */,
 				C3876FE91E13B0300072009C /* VideoLibraryViewController.swift */,
 				C3876FEB1E13B07E0072009C /* VideoLibraryViewModel.swift */,
+				C3876FED1E146EA30072009C /* Video.swift */,
 			);
 			name = "Video Library";
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 				C3876FDA1E135D8D0072009C /* ConfigurationReducer.swift in Sources */,
 				C3876FD71E135CCC0072009C /* ConfigurationState.swift in Sources */,
 				C3876FD51E135B910072009C /* AppReducer.swift in Sources */,
+				C3876FEE1E146EA30072009C /* Video.swift in Sources */,
 				C3876FE31E13674C0072009C /* VideoLibraryActions.swift in Sources */,
 				C3876F9D1E10FD950072009C /* AppDelegate.swift in Sources */,
 				C3876FEA1E13B0300072009C /* VideoLibraryViewController.swift in Sources */,
@@ -665,6 +669,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9B3N9PW2XN;
 				INFOPLIST_FILE = "Movie Killer/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.itsronald.Movie-Killer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -679,6 +684,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9B3N9PW2XN;
 				INFOPLIST_FILE = "Movie Killer/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.itsronald.Movie-Killer";
 				PRODUCT_NAME = "$(TARGET_NAME)";

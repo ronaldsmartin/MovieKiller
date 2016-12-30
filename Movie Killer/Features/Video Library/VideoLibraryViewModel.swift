@@ -11,14 +11,18 @@ import Photos
 import ReSwift
 import RxSwift
 
-class VideoLibraryViewModel: NSObject {
+class VideoLibraryViewModel {
+    
+    let thumbnailManager = PHCachingImageManager.default() as! PHCachingImageManager
+    let thumbnailSize = CGSize(width: 79, height: 44)   // 16:9 ratio with standard row height.
     
     private let disposeBag = DisposeBag()
     
     fileprivate var videoResults = Variable<PHFetchResult<PHAsset>>(store.state.library.videos)
     
-    override init() {
-        super.init()
+    // MARK: - Lifecycle
+    
+    init() {
         store.subscribe(self) { state in state.library }
         store.dispatch(VideoLibraryAction.fetchVideos)
     }
@@ -27,11 +31,20 @@ class VideoLibraryViewModel: NSObject {
         store.unsubscribe(self)
     }
     
-    func videos() -> Observable<[PHAsset]> {
-        // TODO: Replace PHAsset with a ViewModel type.
+    // MARK: - Methods
+    
+    func videos() -> Observable<[Video]> {
         return videoResults.asObservable()
             .map { fetchResult in
-                (0 ..< fetchResult.count).map { fetchResult.object(at: $0) }
+                let assets = (0 ..< fetchResult.count)
+                    .map(fetchResult.object(at:))
+                
+                self.thumbnailManager.startCachingImages(for: assets,
+                                                         targetSize: self.thumbnailSize,
+                                                         contentMode: .aspectFill,
+                                                         options: nil)
+                
+                return assets.map(Video.init(photosAsset:))
             }
     }
 }
