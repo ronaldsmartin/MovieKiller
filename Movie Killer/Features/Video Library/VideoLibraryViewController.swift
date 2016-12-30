@@ -35,7 +35,7 @@ class VideoLibraryViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func bind(data: Observable<[Video]>, to observer: Reactive<UITableView>) {
+    private func bind(data: Observable<[Video]>, to observer: Reactive<UITableView>) {
         let cellReuseId = "VideoLibraryCell"
         
         data.asDriver(onErrorJustReturn: [])
@@ -63,7 +63,7 @@ class VideoLibraryViewController: UIViewController {
             .addDisposableTo(disposeBag)
     }
     
-    func bindClicks(on view: Reactive<UITableView>, to callback: @escaping (Video) -> Void) {
+    private func bindClicks(on view: Reactive<UITableView>, to callback: @escaping (Video) -> Void) {
         view.modelSelected(Video.self)
             .asDriver()
             .drive(onNext: callback)
