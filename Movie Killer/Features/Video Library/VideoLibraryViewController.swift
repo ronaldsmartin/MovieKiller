@@ -40,6 +40,7 @@ class VideoLibraryViewController: UIViewController {
             .asDriver(onErrorJustReturn: [])
             .drive(tableView.rx.items(cellIdentifier: cellReuseId)) { _, item, cell in
                 cell.textLabel?.text = item.filename
+                cell.detailTextLabel?.text = item.displayDate
                                         
                 guard let imageView = cell.imageView else {
                     print("Warning: cell does not contain required image outlet.")

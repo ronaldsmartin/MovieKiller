@@ -44,7 +44,11 @@ class VideoLibraryViewModel {
                                                          contentMode: .aspectFill,
                                                          options: nil)
                 
-                return assets.map(Video.init(photosAsset:))
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateStyle = .short
+                dateFormatter.timeStyle = .none
+                
+                return assets.map { Video(photosAsset: $0, dateFormatter: dateFormatter) }
             }
     }
 }

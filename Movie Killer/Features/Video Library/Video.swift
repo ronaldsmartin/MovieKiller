@@ -18,18 +18,23 @@ struct Video {
     
     var filename: String {
         let resources = PHAssetResource.assetResources(for: asset)
-        return resources.first?.originalFilename ?? "Loading..."
+        return resources.first?.originalFilename ?? "Unnamed movie file"
     }
     
-    var dateModified: Date? {
-        return asset.modificationDate
-    }
+    let displayDate: String
     
     
     // MARK: - Initializers
     
-    init(photosAsset asset: PHAsset) {
+    init(photosAsset asset: PHAsset, dateFormatter formatter: DateFormatter) {
         self.asset = asset
+        
+        let videoDate = asset.modificationDate ?? asset.creationDate
+        if let videoDate = videoDate {
+            self.displayDate = formatter.string(from: videoDate)
+        } else {
+            self.displayDate = ""
+        }
     }
     
     func getThumbnail(with imageManager: PHImageManager, size: CGSize) {
