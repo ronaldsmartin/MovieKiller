@@ -33,12 +33,12 @@ struct VideoLibraryReducer: Reducer {
     }
     
     private func fetchVideos() -> PHFetchResult<PHAsset> {
-        let videoCollections = PHAssetCollection
-            .fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumVideos, options: nil)
+        let fetchOptions = PHFetchOptions()
+        fetchOptions.sortDescriptors = [
+            NSSortDescriptor(key: "creationDate", ascending: false),
+            NSSortDescriptor(key: "modificationDate", ascending: false)
+        ]
         
-        if let videos = videoCollections.firstObject {
-            return PHAsset.fetchAssets(in: videos, options: nil)
-        }
-        return PHFetchResult<PHAsset>()
+        return PHAsset.fetchAssets(with: .video, options: fetchOptions)
     }
 }
