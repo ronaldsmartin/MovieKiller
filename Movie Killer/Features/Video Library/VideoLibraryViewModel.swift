@@ -51,6 +51,10 @@ class VideoLibraryViewModel {
                 return assets.map { Video(photosAsset: $0, dateFormatter: dateFormatter) }
             }
     }
+    
+    func onSelect(video: Video) {
+        print("Selected video: \(video)")
+    }
 }
 
 

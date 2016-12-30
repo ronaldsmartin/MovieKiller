@@ -26,7 +26,8 @@ class VideoLibraryViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        bindTableData()
+        bind(data: viewModel.videos(), to: tableView.rx)
+        bindClicks(on: tableView.rx, to: viewModel.onSelect(video:))
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,14 +35,14 @@ class VideoLibraryViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func bindTableData() {
+    func bind(data: Observable<[Video]>, to observer: Reactive<UITableView>) {
         let cellReuseId = "VideoLibraryCell"
-        viewModel.videos()
-            .asDriver(onErrorJustReturn: [])
-            .drive(tableView.rx.items(cellIdentifier: cellReuseId)) { _, item, cell in
+        
+        data.asDriver(onErrorJustReturn: [])
+            .drive(observer.items(cellIdentifier: cellReuseId)) { _, item, cell in
                 cell.textLabel?.text = item.filename
                 cell.detailTextLabel?.text = item.displayDate
-                                        
+                
                 guard let imageView = cell.imageView else {
                     print("Warning: cell does not contain required image outlet.")
                     return
@@ -58,6 +59,13 @@ class VideoLibraryViewController: UIViewController {
                 item.getThumbnail(with: self.viewModel.thumbnailManager,
                                   size: self.viewModel.thumbnailSize)
             }
+            .addDisposableTo(disposeBag)
+    }
+    
+    func bindClicks(on view: Reactive<UITableView>, to callback: @escaping (Video) -> Void) {
+        view.modelSelected(Video.self)
+            .asDriver()
+            .drive(onNext: callback)
             .addDisposableTo(disposeBag)
     }
     
