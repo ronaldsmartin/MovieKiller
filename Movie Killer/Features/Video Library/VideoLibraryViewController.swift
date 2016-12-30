@@ -44,17 +44,18 @@ class VideoLibraryViewController: UIViewController {
                 cell.detailTextLabel?.text = item.displayDate
                 
                 guard let imageView = cell.imageView else {
-                    print("Warning: cell does not contain required image outlet.")
+                    assertionFailure("Warning: cell does not contain required image outlet.")
                     return
                 }
                 // Bind imageView to image updates.
                 item.thumbnail.asDriver()
+                    .do(onNext: { _ in
+                        // Make sure cell subviews resize to accomodate new thumbnails.
+                        cell.sizeToFit()
+                    })
                     .drive(imageView.rx.image)
                     .addDisposableTo(self.disposeBag)
-                // Make sure cell subviews resize to accomodate new thumbnails.
-                item.thumbnail.asObservable()
-                    .bindNext { _ in cell.sizeToFit() }
-                    .addDisposableTo(self.disposeBag)
+                
                 // Request thumbnail asynchronously.
                 item.getThumbnail(with: self.viewModel.thumbnailManager,
                                   size: self.viewModel.thumbnailSize)
