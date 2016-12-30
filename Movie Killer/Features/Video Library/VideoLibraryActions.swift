@@ -14,5 +14,5 @@ enum VideoLibraryAction: Action {
     /// Query the Photos framework for videos stored on the device.
     case fetchVideos
     /// Select a specific video from the library for playback.
-    case selectVideo(video: NSURL)
+    case selectVideo(video: Video)
 }

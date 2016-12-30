@@ -24,9 +24,8 @@ struct VideoLibraryReducer: Reducer {
         switch action {
         case .fetchVideos:
             state.videos = fetchVideos()
-            return state
-        case .selectVideo(_):
-            break
+        case .selectVideo(let video):
+            state.selectedVideo = video
         }
         
         return state

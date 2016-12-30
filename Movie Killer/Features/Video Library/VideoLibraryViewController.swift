@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVKit
 import RxCocoa
 import RxSwift
 
@@ -28,6 +29,7 @@ class VideoLibraryViewController: UIViewController {
         // Do any additional setup after loading the view.
         bind(data: viewModel.videos(), to: tableView.rx)
         bindClicks(on: tableView.rx, to: viewModel.onSelect(video:))
+        prepareForPlayback()
     }
 
     override func didReceiveMemoryWarning() {
@@ -70,6 +72,19 @@ class VideoLibraryViewController: UIViewController {
             .addDisposableTo(disposeBag)
     }
     
+    private func prepareForPlayback() {
+        viewModel.player()
+            .filter { $0.currentItem != nil }
+            .drive(onNext: { player in
+                let playerViewController = AVPlayerViewController()
+                playerViewController.player = player
+                
+                self.present(playerViewController, animated: true) {
+                    player.play()
+                }
+            })
+            .addDisposableTo(disposeBag)
+    }
 
     /*
     // MARK: - Navigation
