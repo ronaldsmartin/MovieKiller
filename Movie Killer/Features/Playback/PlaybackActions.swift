@@ -13,4 +13,6 @@ enum PlaybackAction: Action {
     case startPlayback
     case pausePlayback
     case stopPlayback
+    case playbackElapsed(TimeInterval)
+    case crashPlayback
 }

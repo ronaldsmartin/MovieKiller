@@ -30,6 +30,7 @@
 		C3A3C4B51E1726F70055CDD0 /* PlaybackState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A3C4B41E1726F70055CDD0 /* PlaybackState.swift */; };
 		C3A3C4B81E17276C0055CDD0 /* PlaybackReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A3C4B71E17276C0055CDD0 /* PlaybackReducer.swift */; };
 		C3A3C4BA1E1727EA0055CDD0 /* PlaybackActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A3C4B91E1727EA0055CDD0 /* PlaybackActions.swift */; };
+		C3D727EF1E1812E100A6FA9A /* PlaybackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D727EE1E1812E000A6FA9A /* PlaybackViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		C3A3C4B41E1726F70055CDD0 /* PlaybackState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaybackState.swift; path = Features/Playback/PlaybackState.swift; sourceTree = "<group>"; };
 		C3A3C4B71E17276C0055CDD0 /* PlaybackReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaybackReducer.swift; path = Features/Playback/PlaybackReducer.swift; sourceTree = "<group>"; };
 		C3A3C4B91E1727EA0055CDD0 /* PlaybackActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaybackActions.swift; path = Features/Playback/PlaybackActions.swift; sourceTree = "<group>"; };
+		C3D727EE1E1812E000A6FA9A /* PlaybackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaybackViewController.swift; path = Features/Playback/PlaybackViewController.swift; sourceTree = "<group>"; };
 		DB5111DD327818FD161395B1 /* Pods_Movie_KillerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movie_KillerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -229,11 +231,20 @@
 		C3A3C4B61E1726FD0055CDD0 /* Video Playback */ = {
 			isa = PBXGroup;
 			children = (
+				C3D727F01E18263F00A6FA9A /* Flow */,
+				C3D727EE1E1812E000A6FA9A /* PlaybackViewController.swift */,
+			);
+			name = "Video Playback";
+			sourceTree = "<group>";
+		};
+		C3D727F01E18263F00A6FA9A /* Flow */ = {
+			isa = PBXGroup;
+			children = (
 				C3A3C4B41E1726F70055CDD0 /* PlaybackState.swift */,
 				C3A3C4B71E17276C0055CDD0 /* PlaybackReducer.swift */,
 				C3A3C4B91E1727EA0055CDD0 /* PlaybackActions.swift */,
 			);
-			name = "Video Playback";
+			name = Flow;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -527,6 +538,7 @@
 				C3876FE11E1362750072009C /* VideoLibraryReducer.swift in Sources */,
 				C3876FDA1E135D8D0072009C /* ConfigurationReducer.swift in Sources */,
 				C3876FD71E135CCC0072009C /* ConfigurationState.swift in Sources */,
+				C3D727EF1E1812E100A6FA9A /* PlaybackViewController.swift in Sources */,
 				C3A3C4BA1E1727EA0055CDD0 /* PlaybackActions.swift in Sources */,
 				C3A3C4B51E1726F70055CDD0 /* PlaybackState.swift in Sources */,
 				C3876FD51E135B910072009C /* AppReducer.swift in Sources */,

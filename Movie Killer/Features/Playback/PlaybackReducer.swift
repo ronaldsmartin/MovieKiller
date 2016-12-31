@@ -7,12 +7,13 @@
 //
 
 import Foundation
+import AVFoundation
 import ReSwift
 
 struct PlaybackReducer: Reducer {
     
     func handleAction(action: Action, state: PlaybackState?) -> PlaybackState {
-        guard let state = state else {
+        guard var state = state else {
             return PlaybackState()
         }
         guard let action = action as? PlaybackAction else {
@@ -26,7 +27,13 @@ struct PlaybackReducer: Reducer {
         case .pausePlayback:
             break
         case .stopPlayback:
-            break
+            // Reset the crash counter.
+            // TODO: Pull value from user settings.
+            state.timeUntilCrash = PlaybackState.defaultPlaybackTime
+        case .playbackElapsed(let elapsedTime):
+            state.timeUntilCrash -= elapsedTime
+        case .crashPlayback:
+            fatalError("Haha time to crash!")
         }
         
         return state

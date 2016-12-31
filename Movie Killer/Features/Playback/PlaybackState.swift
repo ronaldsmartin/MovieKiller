@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AVFoundation
 import ReSwift
 
 /**
@@ -14,4 +15,7 @@ import ReSwift
  */
 struct PlaybackState: StateType {
     
+    static let defaultPlaybackTime: TimeInterval = 60
+    
+    var timeUntilCrash: TimeInterval = defaultPlaybackTime
 }
