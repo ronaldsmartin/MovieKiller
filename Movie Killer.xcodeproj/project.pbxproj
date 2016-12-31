@@ -27,6 +27,9 @@
 		C3876FEA1E13B0300072009C /* VideoLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3876FE91E13B0300072009C /* VideoLibraryViewController.swift */; };
 		C3876FEC1E13B07E0072009C /* VideoLibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3876FEB1E13B07E0072009C /* VideoLibraryViewModel.swift */; };
 		C3876FEE1E146EA30072009C /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3876FED1E146EA30072009C /* Video.swift */; };
+		C3A3C4B51E1726F70055CDD0 /* PlaybackState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A3C4B41E1726F70055CDD0 /* PlaybackState.swift */; };
+		C3A3C4B81E17276C0055CDD0 /* PlaybackReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A3C4B71E17276C0055CDD0 /* PlaybackReducer.swift */; };
+		C3A3C4BA1E1727EA0055CDD0 /* PlaybackActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A3C4B91E1727EA0055CDD0 /* PlaybackActions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +81,9 @@
 		C3876FE91E13B0300072009C /* VideoLibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoLibraryViewController.swift; path = "Features/Video Library/VideoLibraryViewController.swift"; sourceTree = "<group>"; };
 		C3876FEB1E13B07E0072009C /* VideoLibraryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoLibraryViewModel.swift; path = "Features/Video Library/VideoLibraryViewModel.swift"; sourceTree = "<group>"; };
 		C3876FED1E146EA30072009C /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Video.swift; path = "Features/Video Library/Video.swift"; sourceTree = "<group>"; };
+		C3A3C4B41E1726F70055CDD0 /* PlaybackState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaybackState.swift; path = Features/Playback/PlaybackState.swift; sourceTree = "<group>"; };
+		C3A3C4B71E17276C0055CDD0 /* PlaybackReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaybackReducer.swift; path = Features/Playback/PlaybackReducer.swift; sourceTree = "<group>"; };
+		C3A3C4B91E1727EA0055CDD0 /* PlaybackActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaybackActions.swift; path = Features/Playback/PlaybackActions.swift; sourceTree = "<group>"; };
 		DB5111DD327818FD161395B1 /* Pods_Movie_KillerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movie_KillerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -159,6 +165,7 @@
 			children = (
 				C3876FD81E135CD00072009C /* Configuration */,
 				C3876FDD1E13612B0072009C /* Video Library */,
+				C3A3C4B61E1726FD0055CDD0 /* Video Playback */,
 				C3876F9C1E10FD950072009C /* AppDelegate.swift */,
 				C3876FD21E135A4F0072009C /* AppState.swift */,
 				C3876FD41E135B910072009C /* AppReducer.swift */,
@@ -217,6 +224,16 @@
 				C3876FE21E13674C0072009C /* VideoLibraryActions.swift */,
 			);
 			name = Flow;
+			sourceTree = "<group>";
+		};
+		C3A3C4B61E1726FD0055CDD0 /* Video Playback */ = {
+			isa = PBXGroup;
+			children = (
+				C3A3C4B41E1726F70055CDD0 /* PlaybackState.swift */,
+				C3A3C4B71E17276C0055CDD0 /* PlaybackReducer.swift */,
+				C3A3C4B91E1727EA0055CDD0 /* PlaybackActions.swift */,
+			);
+			name = "Video Playback";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -510,7 +527,10 @@
 				C3876FE11E1362750072009C /* VideoLibraryReducer.swift in Sources */,
 				C3876FDA1E135D8D0072009C /* ConfigurationReducer.swift in Sources */,
 				C3876FD71E135CCC0072009C /* ConfigurationState.swift in Sources */,
+				C3A3C4BA1E1727EA0055CDD0 /* PlaybackActions.swift in Sources */,
+				C3A3C4B51E1726F70055CDD0 /* PlaybackState.swift in Sources */,
 				C3876FD51E135B910072009C /* AppReducer.swift in Sources */,
+				C3A3C4B81E17276C0055CDD0 /* PlaybackReducer.swift in Sources */,
 				C3876FEE1E146EA30072009C /* Video.swift in Sources */,
 				C3876FE31E13674C0072009C /* VideoLibraryActions.swift in Sources */,
 				C3876F9D1E10FD950072009C /* AppDelegate.swift in Sources */,

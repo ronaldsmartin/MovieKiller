@@ -13,8 +13,11 @@ import ReSwift
 struct AppState: StateType {
     
     /// User application settings.
-    var configuration: ConfigurationState
+    let configuration: ConfigurationState
     
     /// Movies playable through the app.
-    var library: VideoLibraryState
+    let library: VideoLibraryState
+    
+    /// Sub-state of the currently playing video.
+    let playback: PlaybackState
 }
