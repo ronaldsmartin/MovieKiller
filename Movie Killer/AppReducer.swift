@@ -13,11 +13,13 @@ struct AppReducer: Reducer {
     
     private let configReducer = ConfigurationReducer()
     private let libraryReducer = VideoLibraryReducer()
+    private let playbackReducer = PlaybackReducer()
     
     func handleAction(action: Action, state: AppState?) -> AppState {
         return AppState(
             configuration: configReducer.handleAction(action: action, state: state?.configuration),
-            library: libraryReducer.handleAction(action: action, state: state?.library)
+            library: libraryReducer.handleAction(action: action, state: state?.library),
+            playback: playbackReducer.handleAction(action: action, state: state?.playback)
         )
     }
 }

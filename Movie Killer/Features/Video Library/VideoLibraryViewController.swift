@@ -90,7 +90,7 @@ class VideoLibraryViewController: UIViewController {
         viewModel.player()
             .filter { $0.currentItem != nil }
             .drive(onNext: { player in
-                let playerViewController = AVPlayerViewController()
+                let playerViewController = PlaybackViewController()
                 playerViewController.player = player
                 
                 self.present(playerViewController, animated: true) {
