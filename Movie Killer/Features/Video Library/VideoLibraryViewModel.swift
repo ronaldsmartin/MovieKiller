@@ -82,6 +82,10 @@ class VideoLibraryViewModel {
     func player() -> SharedSequence<DriverSharingStrategy, AVPlayer> {
         return videoPlayer.asDriver()
     }
+    
+    func reloadData() {
+        store.dispatch(VideoLibraryAction.fetchVideos)
+    }
 }
 
 

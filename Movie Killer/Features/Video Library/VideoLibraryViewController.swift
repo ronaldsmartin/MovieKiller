@@ -32,6 +32,11 @@ class VideoLibraryViewController: UIViewController {
         bindClicks(on: tableView.rx, to: viewModel.onSelect(video:))
         prepareForPlayback()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.reloadData()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
