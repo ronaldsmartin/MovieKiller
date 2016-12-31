@@ -16,6 +16,7 @@ class VideoLibraryViewController: UIViewController {
     // MARK: Outlets
     
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var emptyView: UIView!
     
     private let viewModel = VideoLibraryViewModel()
     private let disposeBag = DisposeBag()
@@ -31,6 +32,11 @@ class VideoLibraryViewController: UIViewController {
         bindClicks(on: tableView.rx, to: viewModel.onSelect(video:))
         prepareForPlayback()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.reloadData()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -40,10 +46,12 @@ class VideoLibraryViewController: UIViewController {
     private func bind(data: Observable<[Video]>, to observer: Reactive<UITableView>) {
         let cellReuseId = "VideoLibraryCell"
         
-        data.asDriver(onErrorJustReturn: [])
+        let driver = data.asDriver(onErrorJustReturn: [])
+        
+        driver
             .distinctUntilChanged { $0 == $1 }
             .drive(observer.items(cellIdentifier: cellReuseId)) { _, item, cell in
-                cell.textLabel?.text = item.filename
+                cell.textLabel?.text = item.name
                 cell.detailTextLabel?.text = item.displayDate
                 
                 guard let imageView = cell.imageView else {
@@ -63,6 +71,11 @@ class VideoLibraryViewController: UIViewController {
                 item.getThumbnail(with: self.viewModel.thumbnailManager,
                                   size: self.viewModel.thumbnailSize)
             }
+            .addDisposableTo(disposeBag)
+        
+        driver
+            .map { $0.isEmpty }
+            .drive(observer.isHidden)
             .addDisposableTo(disposeBag)
     }
     
