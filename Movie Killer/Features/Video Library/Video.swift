@@ -7,27 +7,65 @@
 //
 
 import Foundation
+import MediaPlayer
 import Photos
 import RxSwift
 
 struct Video {
     
-    let asset: PHAsset
+    enum Source {
+        case mediaLibrary(MPMediaItem)
+        case photos(PHAsset)
+    }
+    
+    // MARK: Stored properties
+    
+    let source: Source
     
     let thumbnail = Variable<UIImage?>(nil)
     
-    var filename: String {
-        let resources = PHAssetResource.assetResources(for: asset)
-        return resources.first?.originalFilename ?? "Unnamed movie file"
+    let displayDate: String
+    
+    // MARK: Computed properties
+    
+    var name: String {
+        switch source {
+        case .mediaLibrary(let mediaItem):
+            return mediaItem.title ?? "Unnamed movie file"
+        case .photos(let asset):
+            let resources = PHAssetResource.assetResources(for: asset)
+            return resources.first?.originalFilename ?? "Unnamed video file"
+        }
     }
     
-    let displayDate: String
+    var asset: PHAsset? {
+        if case .photos(let asset) = source {
+            return asset
+        }
+        return nil
+    }
+    
+    var mediaItem: MPMediaItem? {
+        if case .mediaLibrary(let item) = source {
+            return item
+        }
+        return nil
+    }
+    
+    var duration: TimeInterval {
+        switch source {
+        case .mediaLibrary(let item):
+            return item.playbackDuration
+        case .photos(let asset):
+            return asset.duration
+        }
+    }
     
     
     // MARK: - Initializers
     
     init(photosAsset asset: PHAsset, dateFormatter formatter: DateFormatter) {
-        self.asset = asset
+        self.source = .photos(asset)
         
         let videoDate = asset.modificationDate ?? asset.creationDate
         if let videoDate = videoDate {
@@ -37,13 +75,31 @@ struct Video {
         }
     }
     
+    init(mediaItem item: MPMediaItem,
+         dateFormatter formatter: DateFormatter) {
+        self.source = .mediaLibrary(item)
+        
+        if let videoDate = item.releaseDate {
+            self.displayDate = formatter.string(from: videoDate)
+        } else if #available(iOS 10.0, *) {
+            self.displayDate = formatter.string(from: item.dateAdded)
+        } else {
+            self.displayDate = ""
+        }
+    }
+    
     func getThumbnail(with imageManager: PHImageManager, size: CGSize) {
-        imageManager.requestImage(for: asset,
-                                  targetSize: size,
-                                  contentMode: .aspectFill,
-                                  options: nil) { result, info in
-            DispatchQueue.main.async {
-                self.thumbnail.value = result
+        switch source {
+        case .mediaLibrary(let mediaItem):
+            self.thumbnail.value = mediaItem.artwork?.image(at: size)
+        case .photos(let asset):
+            imageManager.requestImage(for: asset,
+                                      targetSize: size,
+                                      contentMode: .aspectFill,
+                                      options: nil) { result, info in
+                DispatchQueue.main.async {
+                    self.thumbnail.value = result
+                }
             }
         }
     }
@@ -52,6 +108,13 @@ struct Video {
 // MARK: - Equatable
 extension Video: Equatable {}
 func ==(lhs: Video, rhs: Video) -> Bool {
-    return lhs.asset.isEqual(rhs.asset)
-        || lhs.filename == rhs.filename
+    switch (lhs.source, rhs.source) {
+    case (.photos(let lhsAsset), .photos(let rhsAsset)):
+        return lhsAsset.isEqual(rhsAsset)
+            || lhs.name == rhs.name
+    case (.mediaLibrary(let lhsMediaItem), .mediaLibrary(let rhsMediaItem)):
+        return lhsMediaItem.isEqual(rhsMediaItem)
+    default:
+        return false
+    }
 }

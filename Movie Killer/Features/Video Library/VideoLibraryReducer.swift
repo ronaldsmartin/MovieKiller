@@ -8,6 +8,7 @@
 
 import Foundation
 import ReSwift
+import MediaPlayer
 import Photos
 
 struct VideoLibraryReducer: Reducer {
@@ -31,7 +32,14 @@ struct VideoLibraryReducer: Reducer {
         return state
     }
     
-    private func fetchVideos() -> PHFetchResult<PHAsset> {
+    private func fetchVideos() -> [Video] {
+        var videosFromMediaLib = fetchMoviesFromMediaLibrary()
+        let videosFromPhotos = convertToVideos(fetchResult: fetchVideosFromPhotos())
+        videosFromMediaLib.append(contentsOf: videosFromPhotos)
+        return videosFromMediaLib
+    }
+    
+    private func fetchVideosFromPhotos() -> PHFetchResult<PHAsset> {
         let fetchOptions = PHFetchOptions()
         fetchOptions.sortDescriptors = [
             NSSortDescriptor(key: "creationDate", ascending: false),
@@ -39,5 +47,29 @@ struct VideoLibraryReducer: Reducer {
         ]
         
         return PHAsset.fetchAssets(with: .video, options: fetchOptions)
+    }
+    
+    func convertToVideos(fetchResult: PHFetchResult<PHAsset>) -> [Video] {
+        let assets = (0 ..< fetchResult.count)
+            .map(fetchResult.object(at:))
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
+        
+        return assets.map { Video(photosAsset: $0, dateFormatter: dateFormatter) }
+    }
+    
+    private func fetchMoviesFromMediaLibrary() -> [Video] {
+        let queryPredicate = MPMediaPropertyPredicate(value: MPMediaType.anyVideo.rawValue,
+                                                      forProperty: MPMediaItemPropertyMediaType)
+        let query = MPMediaQuery(filterPredicates: [queryPredicate])
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
+        
+        let items = query.items ?? []
+        return items.map { item in Video(mediaItem: item, dateFormatter: dateFormatter) }
     }
 }

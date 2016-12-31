@@ -20,7 +20,7 @@ struct VideoLibraryState: StateType {
     }
     
     /// The collection of movies with which the user can interact view and play.
-    var videos = PHFetchResult<PHAsset>()
+    var videos = [Video]()
     
     var selectedVideo: Video?
 }

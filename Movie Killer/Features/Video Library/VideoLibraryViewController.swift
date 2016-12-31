@@ -51,7 +51,7 @@ class VideoLibraryViewController: UIViewController {
         driver
             .distinctUntilChanged { $0 == $1 }
             .drive(observer.items(cellIdentifier: cellReuseId)) { _, item, cell in
-                cell.textLabel?.text = item.filename
+                cell.textLabel?.text = item.name
                 cell.detailTextLabel?.text = item.displayDate
                 
                 guard let imageView = cell.imageView else {
