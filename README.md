@@ -1,4 +1,6 @@
 # Movie Killer
+*Note: While this is a working prototype for any movies transferred to your iOS device from external sources, it turns out that the intended recipients get a majority of their movies from the iTunes Store. Access to those media resources is explicitly restricted for third-party apps and limits Movie Killer's potential usefulness. I've learned what I wanted and stopped working on this app, but you should feel free to adapt it for your purposes!*
+
 An iOS video player that crashes intentionally.
 
 ## But why?
